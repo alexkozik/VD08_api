@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Случайная цитата</title>
+    <!-- Подключаем Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <div class="container text-center mt-5">
+        <h1 class="mb-4 text-primary fw-bold">Случайная цитата</h1>
+        <form method="post">
+            <button type="submit" class="btn btn-lg btn-success shadow-sm">
+                🔄 Получить цитату
+            </button>
+        </form>
+
+        <div class="result mt-5">
+            {% if quote %}
+            <div class="card shadow-lg border-0">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p class="fs-4 fst-italic">“{{ quote[0]['q'] }}”</p>
+                        <footer class="blockquote-footer mt-3">
+                            {{ quote[0]['a'] }}
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <footer class="mt-auto text-center py-3 text-muted">
+        © 2025 Random Quotes
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

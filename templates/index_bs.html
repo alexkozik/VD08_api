@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Прогноз погоды</title>
+  <!-- Подключаем Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+  <div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+      <h1 class="display-5 fw-bold text-primary">🌍 Прогноз погоды</h1>
+      <p class="text-muted">Узнайте актуальную погоду в любой точке мира</p>
+    </div>
+
+    <!-- Форма -->
+    <div class="card shadow-sm p-4 mb-4">
+      <form method="post" class="row g-3">
+        <div class="col-md-9">
+          <input type="text" name="city" class="form-control form-control-lg" placeholder="Введите город" required>
+        </div>
+        <div class="col-md-3 d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">Узнать погоду</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Результат -->
+    {% if weather %}
+    <div class="card shadow-sm border-0">
+      <div class="card-body text-center">
+        <h3 class="card-title mb-3 text-success">Погода в {{ weather['name'] }}</h3>
+        <p class="fs-5">🌡 Температура: <strong>{{ weather['main']['temp'] }}°C</strong></p>
+        <p class="fs-5">☁️ Состояние: <strong>{{ weather['weather'][0]['description'] }}</strong></p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if news %}
+      <h2>Новости:</h2>
+       <ul>
+           {% for article in news %}
+               <li><a href="{{ article['url'] }}"> {{ article['title'] }} </a></li>
+           {% endfor %}
+       </ul>
+   {% endif %}
+  </div>
+
+  <div class="result text-center">
+
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

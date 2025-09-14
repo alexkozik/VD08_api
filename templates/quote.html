@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Title</title>
+
+</head>
+<body>
+<h1>Случайная цитата с сайта zenquotes.io</h1>
+<form method="post">
+    <button type="submit">Получить цитату</button>
+   </form>
+   <div class="result">
+       {% if quote %}
+        <h3>{{ quote[0]['q'] }}</h3>
+        <h3>{{ quote[0]['a'] }}</h3>
+       {% endif %}
+</div>
+</body>
+</html>
